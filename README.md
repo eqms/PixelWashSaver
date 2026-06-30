@@ -11,6 +11,41 @@ Schachbrett – komplett in Swift, ohne WebView. Version 2.1, Universal Binary
 
 ## Deutsche Dokumentation
 
+### Was PixelWash für dich tut (Funktionsumfang)
+
+Eingebrannte Geisterbilder (Image Retention) entstehen, wenn dieselben Pixel
+stundenlang dasselbe zeigen – Menüleiste, Dock, Fensterrahmen. PixelWash bewegt im
+Leerlauf gezielt jeden Pixel durch wechselnde Farben und Helligkeiten und gleicht
+diese ungleiche Belastung wieder aus. Du musst nichts bedienen: einmal als
+Bildschirmschoner eingerichtet, übernimmt es automatisch.
+
+Vier Wasch-Verfahren wechseln sich im Auto-Mix ab – jedes packt das Problem von
+einer anderen Seite an:
+
+- **Rauschen** – Der stärkste Reiniger: Jeder Pixel flackert permanent in
+  zufälligen Farben. Bringt maximale Bewegung in kürzester Zeit und ist erste Wahl
+  bei hartnäckigen Geisterbildern.
+- **Vollfarben** – Füllt den ganzen Schirm nacheinander mit kräftigen Volltönen
+  (Weiß, Schwarz, Rot, Grün, Blau, Gelb, Cyan, Magenta, Grau). So durchläuft jeder
+  Pixel das komplette Farb- und Helligkeitsspektrum und wird gleichmäßig
+  „durchgewalkt“.
+- **Laufstreifen** – Sanft wandernde Diagonalstreifen. Optisch ruhiger und
+  angenehmer fürs Auge, falls der Bildschirm in Sichtweite steht, während die Kur
+  läuft.
+- **Schachbrett** – Ein ständig invertierendes Karomuster. Schaltet jeden Pixel
+  rhythmisch zwischen Hell und Dunkel – gut gegen eingebrannte statische Flächen
+  und Kanten.
+
+Dazu die Steuerung, die du selbst in der Hand hast:
+
+- **Modi an-/abwählen** – Nur nutzen, was du brauchst (mind. ein Modus).
+- **Tempo (1–10)** – Von gemächlich bis quirlig, je nach gewünschter Intensität.
+- **Wechselintervall** – Wie oft die Verfahren rotieren – oder dauerhaft bei einem
+  bleiben.
+- **Pro Monitor wählbar** – Behandle gezielt nur den betroffenen Bildschirm.
+- **Kein Speichern, kein Rebuild** – Einstellungen greifen sofort beim nächsten
+  Start.
+
 ### Wichtig zuerst: der physikalische Haken
 
 Ein Screensaver wäscht **nur, solange das Display eingeschaltet ist**. Sobald
@@ -100,6 +135,37 @@ bräuchte Developer-ID + Notarisierung.
 ---
 
 ## English Documentation
+
+### What PixelWash does for you (Features)
+
+Burned-in ghost images (image retention) appear when the same pixels show the same
+thing for hours – menu bar, Dock, window frames. During idle, PixelWash
+deliberately drives every pixel through changing colors and brightness levels,
+evening out that uneven load. You don't operate anything: set it up once as a
+screensaver and it takes over automatically.
+
+Four washing techniques alternate in an auto-mix – each tackles the problem from a
+different angle:
+
+- **Noise** – The strongest cleaner: every pixel flickers constantly in random
+  colors. Maximum motion in the shortest time, the first choice for stubborn ghost
+  images.
+- **Cycle** – Fills the whole screen with solid colors one after another (white,
+  black, red, green, blue, yellow, cyan, magenta, grey). Every pixel runs through
+  the full color and brightness range and is evenly worked through.
+- **Bars** – Gently drifting diagonal stripes. Visually calmer and easier on the
+  eye if the screen is in view while the cure runs.
+- **Checker** – A constantly inverting checkerboard. Switches every pixel
+  rhythmically between light and dark – good against burned-in static areas and
+  edges.
+
+Plus the controls you keep in your own hands:
+
+- **Toggle modes** – use only what you need (at least one mode).
+- **Tempo (1–10)** – from leisurely to lively, to your desired intensity.
+- **Switch interval** – how often techniques rotate, or stay on one permanently.
+- **Per-monitor selection** – treat only the affected display.
+- **No saving, no rebuild** – settings apply immediately on the next start.
 
 ### Read this first: the physical catch
 
