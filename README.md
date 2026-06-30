@@ -1,5 +1,7 @@
 # PixelWash – Image-Retention-Kur als macOS-Screensaver
 
+![PixelWashSaver – Funktionsübersicht: die vier Wasch-Verfahren (Rauschen, Vollfarben, Laufstreifen, Schachbrett) und die Steuerung](Resources/pixelwashsaver_eyecatcher.png)
+
 > **Sprache / Language**: [DE](#deutsche-dokumentation) | [EN](#english-documentation)
 
 Screensaver, der vier Wash-Modi nativ in Core Graphics zeichnet und automatisch
@@ -21,6 +23,8 @@ Bildschirmschoner eingerichtet, übernimmt es automatisch.
 
 Vier Wasch-Verfahren wechseln sich im Auto-Mix ab – jedes packt das Problem von
 einer anderen Seite an:
+
+![Die vier Modi im Direktvergleich – oben links Rauschen, oben rechts Vollfarben, unten links Laufstreifen, unten rechts Schachbrett](Resources/thumbnail.png)
 
 - **Rauschen** – Der stärkste Reiniger: Jeder Pixel flackert permanent in
   zufälligen Farben. Bringt maximale Bewegung in kürzester Zeit und ist erste Wahl
@@ -146,6 +150,8 @@ screensaver and it takes over automatically.
 
 Four washing techniques alternate in an auto-mix – each tackles the problem from a
 different angle:
+
+![The four modes side by side – top left noise, top right cycle, bottom left bars, bottom right checker](Resources/thumbnail.png)
 
 - **Noise** – The strongest cleaner: every pixel flickers constantly in random
   colors. Maximum motion in the shortest time, the first choice for stubborn ghost
