@@ -114,9 +114,9 @@ also die Vorschau nutzen oder den echten Leerlauf abwarten (Bildschirm sperren).
   bräuchte Developer-ID + Notarisierung.
 - Bei mehreren Monitoren läuft je Display eine eigene View-Instanz. Native
   Zeichnung ist sparsam; `noise` ist auf 30 fps gedeckelt.
-- Diagnose: Die View loggt ins Subsystem `de.equitania.pixelwash`. Die Shell
+- Diagnose: Die View loggt ins Subsystem `ai.it-guy.pixelwash.saver`. Die Shell
   überschattet das System-`log`, daher den absoluten Pfad nutzen:
-  `/usr/bin/log show --last 2m --info --predicate 'subsystem == "de.equitania.pixelwash"' --style compact`.
+  `/usr/bin/log show --last 2m --info --predicate 'subsystem == "ai.it-guy.pixelwash.saver"' --style compact`.
 
 ### Screensaver vs. aktive Kur
 
@@ -126,15 +126,31 @@ Geisterbild bleibt die eigenständige `Resources/pixelwash.html` im Browser
 (Vollbild) gleich gut und besser kontrollierbar – sie nutzt dieselben vier
 Verfahren, ist aber nicht mehr Teil des Screensaver-Bundles.
 
+### PixelWash.app & Mac App Store (Zwei-Kanal-Vertrieb)
+
+Seit Version 2.2 ist das Repo auf zwei Vertriebskanäle ausgelegt, weil Apple
+keine Screensaver im Mac App Store zulässt (Guideline 2.4.5(ii)):
+
+- **PixelWash.app** (`App/PixelWash.xcodeproj`): eigenständiges Wash-Tool für den
+  Mac App Store – dieselben vier Modi auf Knopfdruck im Fenster oder Vollbild auf
+  allen Displays, sandboxed, mit Link auf den Screensaver-Download. Die
+  Render-Engine (`Sources/PixelWashCore.swift`) teilen sich App und Screensaver.
+- **PixelWash.saver**: weiterhin dieses Bundle, künftig als kostenloser,
+  notarisierter Direktdownload. `./build_release.sh` erzeugt dafür ein
+  Developer-ID-signiertes, notarisiertes `.pkg` (installiert ohne Adminrechte
+  nach `~/Library/Screen Savers`).
+
+Der komplette Submission-Fahrplan steht in
+[`docs/APPSTORE_SUBMISSION.md`](docs/APPSTORE_SUBMISSION.md).
+
 ### Lizenz & Kontakt
 
 Lizenziert unter der **MIT-Lizenz** – siehe [`LICENSE`](LICENSE). Die ad-hoc-Signatur
 des Bundles bedeutet weiterhin „nur eigener Mac“; eine Verteilung an andere Macs
 bräuchte Developer-ID + Notarisierung.
 
-- Equitania Software GmbH
-- E-Mail: <info@ownerp.com>
-- Web: <https://www.ownerp.com>
+- Martin Schmid
+- Web: <https://it-guy.ai>
 
 ---
 
@@ -236,9 +252,9 @@ real idle trigger (lock the screen).
   need a Developer ID + notarization.
 - With multiple monitors each display runs its own view instance. Native drawing is
   light; `noise` is capped at 30 fps.
-- Diagnostics: the view logs to subsystem `de.equitania.pixelwash`. The shell
+- Diagnostics: the view logs to subsystem `ai.it-guy.pixelwash.saver`. The shell
   shadows the system `log`, so use the absolute path:
-  `/usr/bin/log show --last 2m --info --predicate 'subsystem == "de.equitania.pixelwash"' --style compact`.
+  `/usr/bin/log show --last 2m --info --predicate 'subsystem == "ai.it-guy.pixelwash.saver"' --style compact`.
 
 ### Screensaver vs. active cure
 
@@ -248,12 +264,28 @@ an **acute, multi-hour cure** of a stubborn ghost image, the standalone
 controllable – it uses the same four techniques but is no longer part of the
 screensaver bundle.
 
+### PixelWash.app & Mac App Store (two-channel distribution)
+
+As of version 2.2 the repo targets two distribution channels, because Apple does
+not allow screen savers in the Mac App Store (guideline 2.4.5(ii)):
+
+- **PixelWash.app** (`App/PixelWash.xcodeproj`): a standalone wash utility for
+  the Mac App Store – the same four modes on demand, windowed or fullscreen on
+  every display, sandboxed, with a link to the screensaver download. App and
+  screensaver share the rendering engine (`Sources/PixelWashCore.swift`).
+- **PixelWash.saver**: still this bundle, to be distributed as a free, notarized
+  direct download. `./build_release.sh` produces a Developer-ID-signed,
+  notarized `.pkg` for it (installs to `~/Library/Screen Savers` without admin
+  rights).
+
+The full submission roadmap lives in
+[`docs/APPSTORE_SUBMISSION.md`](docs/APPSTORE_SUBMISSION.md).
+
 ### License & Contact
 
 Licensed under the **MIT License** – see [`LICENSE`](LICENSE). The bundle's ad-hoc
 signature still means “your own Mac only”; distribution to other Macs would need a
 Developer ID + notarization.
 
-- Equitania Software GmbH
-- Email: <info@ownerp.com>
-- Web: <https://www.ownerp.com>
+- Martin Schmid
+- Web: <https://it-guy.ai>

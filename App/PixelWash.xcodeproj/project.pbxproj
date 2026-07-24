@@ -1,0 +1,358 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04D74808BFC7440D5B5DAC62 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F9934A4134EF2D68B0187E /* MainWindowController.swift */; };
+		216134F581976BAFA5DDFB13 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C4E67F948D4451C0980141EB /* Localizable.strings */; };
+		68AA0666B34F2F08BD8D8E4B /* FullscreenWashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EB7E9F8C8592DB52B656B0 /* FullscreenWashController.swift */; };
+		6A47706CCB9A8C8EDD033EA5 /* PixelWashCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E101DA59FE80E83CE952B0 /* PixelWashCore.swift */; };
+		6D54D84FE4D53F7A93AFBD87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F3A34CDAF8B9DFFC0D1720E /* Assets.xcassets */; };
+		81FDA5030C39C5C0FEF17CD5 /* WashPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EEB5303B4798B3C16FDE85 /* WashPreviewView.swift */; };
+		A174A848A7F7550205253071 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7FCFA762F581F9F41E216C /* AppDelegate.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		096ED32EB1C3BBA91A43DA6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0E7FCFA762F581F9F41E216C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		17EEB5303B4798B3C16FDE85 /* WashPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WashPreviewView.swift; sourceTree = "<group>"; };
+		4DE2B8D724C52E11CF7E0DCE /* PixelWash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PixelWash.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		55EB7E9F8C8592DB52B656B0 /* FullscreenWashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenWashController.swift; sourceTree = "<group>"; };
+		7BEB5D632A2701B454F5ED51 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7F3A34CDAF8B9DFFC0D1720E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		82F9934A4134EF2D68B0187E /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		E5E101DA59FE80E83CE952B0 /* PixelWashCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PixelWashCore.swift; path = ../Sources/PixelWashCore.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1BFFA22FBA902D44ECD8288C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DE2B8D724C52E11CF7E0DCE /* PixelWash.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		232EE160087314D6214669E7 /* PixelWashApp */ = {
+			isa = PBXGroup;
+			children = (
+				0E7FCFA762F581F9F41E216C /* AppDelegate.swift */,
+				7F3A34CDAF8B9DFFC0D1720E /* Assets.xcassets */,
+				55EB7E9F8C8592DB52B656B0 /* FullscreenWashController.swift */,
+				82F9934A4134EF2D68B0187E /* MainWindowController.swift */,
+				17EEB5303B4798B3C16FDE85 /* WashPreviewView.swift */,
+				C4E67F948D4451C0980141EB /* Localizable.strings */,
+			);
+			path = PixelWashApp;
+			sourceTree = "<group>";
+		};
+		2EDAE28BF36A9DB8033971D1 = {
+			isa = PBXGroup;
+			children = (
+				232EE160087314D6214669E7 /* PixelWashApp */,
+				B430A4F9B93D363946F4D52E /* Shared */,
+				1BFFA22FBA902D44ECD8288C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B430A4F9B93D363946F4D52E /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				E5E101DA59FE80E83CE952B0 /* PixelWashCore.swift */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		759457F89C30BC685F7CA025 /* PixelWash */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA56A7B8528CB304A982F908 /* Build configuration list for PBXNativeTarget "PixelWash" */;
+			buildPhases = (
+				7C2701C700AF8F0AF6F4A161 /* Sources */,
+				498F339EA8A41AD96D310F1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PixelWash;
+			packageProductDependencies = (
+			);
+			productName = PixelWash;
+			productReference = 4DE2B8D724C52E11CF7E0DCE /* PixelWash.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3121F59C2F49D3D7DD684BBD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					759457F89C30BC685F7CA025 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = B424261156886A58417C8CED /* Build configuration list for PBXProject "PixelWash" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				de,
+				en,
+			);
+			mainGroup = 2EDAE28BF36A9DB8033971D1;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 1BFFA22FBA902D44ECD8288C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				759457F89C30BC685F7CA025 /* PixelWash */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		498F339EA8A41AD96D310F1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D54D84FE4D53F7A93AFBD87 /* Assets.xcassets in Resources */,
+				216134F581976BAFA5DDFB13 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7C2701C700AF8F0AF6F4A161 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A174A848A7F7550205253071 /* AppDelegate.swift in Sources */,
+				68AA0666B34F2F08BD8D8E4B /* FullscreenWashController.swift in Sources */,
+				04D74808BFC7440D5B5DAC62 /* MainWindowController.swift in Sources */,
+				6A47706CCB9A8C8EDD033EA5 /* PixelWashCore.swift in Sources */,
+				81FDA5030C39C5C0FEF17CD5 /* WashPreviewView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C4E67F948D4451C0980141EB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7BEB5D632A2701B454F5ED51 /* de */,
+				096ED32EB1C3BBA91A43DA6D /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		23322AB62DDB266872577588 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5;
+			};
+			name = Release;
+		};
+		A3776B84D3A869493EF55534 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PixelWashApp/PixelWash.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PixelWashApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ai.it-guy.pixelwash";
+				PRODUCT_NAME = PixelWash;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+			};
+			name = Debug;
+		};
+		C0B3B33C011184AE8A87E058 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PixelWashApp/PixelWash.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PixelWashApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "ai.it-guy.pixelwash";
+				PRODUCT_NAME = PixelWash;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+			};
+			name = Release;
+		};
+		EA20A8A6D17D126344FC8F15 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B424261156886A58417C8CED /* Build configuration list for PBXProject "PixelWash" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA20A8A6D17D126344FC8F15 /* Debug */,
+				23322AB62DDB266872577588 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		BA56A7B8528CB304A982F908 /* Build configuration list for PBXNativeTarget "PixelWash" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3776B84D3A869493EF55534 /* Debug */,
+				C0B3B33C011184AE8A87E058 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3121F59C2F49D3D7DD684BBD /* Project object */;
+}

@@ -1,0 +1,1 @@
+burn-in,image retention,ghosting,oled,screen fix,display,monitor,pixel,stuck image,wash

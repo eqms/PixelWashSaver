@@ -1,0 +1,17 @@
+Die Menüleiste schimmert noch durch, obwohl der Bildschirm längst etwas anderes zeigt? Das ist Image Retention – und PixelWash ist der schnellste Weg, sie loszuwerden.
+
+PixelWash spielt vier bewährte Wasch-Muster im Vollbild auf allen angeschlossenen Displays ab und bringt jeden Pixel in Bewegung, damit temporäre Geisterbilder verblassen: RGB-Rauschen lässt jeden Pixel zufällig flackern, der Vollfarben-Zyklus fährt die komplette Palette randlos durch, Laufstreifen wandern diagonal über das Panel, und ein invertierendes Schachbrett zielt auf scharfkantige Geisterbilder.
+
+Starte die Kur, sobald dir ein „stehen gebliebenes“ Bild auffällt, lass sie ein paar Minuten laufen – bei hartnäckigen Fällen auch ein paar Stunden – und beende sie mit einem Klick oder Tastendruck.
+
+• Vier Wasch-Modi: RGB-Rauschen, Vollfarben, Laufstreifen, Schachbrett
+• Auto-Mix: wechselt die gewählten Modi im frei einstellbaren Intervall
+• Bespielt alle angeschlossenen Displays gleichzeitig, in nativer Auflösung
+• Tempo-Regler von sanft bis aggressiv
+• Hält das Display während der Kur wach
+• Live-Vorschau im Fenster, bevor es ins Vollbild geht
+• Kein Konto, kein Netzwerk, keine Datensammlung – die App zeichnet Pixel, mehr nicht
+
+Ehrliches Kleingedrucktes: Waschen hilft bei temporärer Image Retention, wie sie bei OLED- und manchen LCD-Panels auftritt. Dauerhaftes Einbrennen – über Jahre ungleich gealterte Pixel – kann keine Software vollständig rückgängig machen. Je früher du wäschst, desto besser die Chancen.
+
+Lieber vorbeugen? Der kostenlose PixelWash-Bildschirmschoner (separater Download auf it-guy.ai) fährt dieselben Wasch-Modi automatisch, sobald dein Mac im Leerlauf ist.

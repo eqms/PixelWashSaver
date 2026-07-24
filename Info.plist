@@ -5,15 +5,17 @@
     <key>CFBundleExecutable</key>
     <string>PixelWash</string>
     <key>CFBundleIdentifier</key>
-    <string>de.equitania.pixelwash</string>
+    <string>ai.it-guy.pixelwash.saver</string>
     <key>CFBundleName</key>
     <string>PixelWash</string>
     <key>CFBundlePackageType</key>
     <string>BNDL</string>
     <key>CFBundleShortVersionString</key>
-    <string>2.1</string>
+    <string>2.2</string>
     <key>CFBundleVersion</key>
-    <string>4</string>
+    <string>5</string>
+    <key>NSHumanReadableCopyright</key>
+    <string>© 2026 Martin Schmid</string>
     <key>NSPrincipalClass</key>
     <string>PixelWashView</string>
     <key>LSMinimumSystemVersion</key>

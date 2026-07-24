@@ -3,25 +3,14 @@ import AppKit
 import os
 
 // PixelWash - Image-Retention-Kur als macOS-Screensaver.
-// Zeichnet vier Wasch-Modi nativ in Core Graphics direkt in der ScreenSaverView.
-// Einstellungen ueber das Konfigurations-Sheet (ScreenSaverDefaults).
+// Duenner ScreenSaverView-Wrapper um die geteilte Render-Engine (PixelWashCore.swift);
+// hier leben nur noch Persistenz (ScreenSaverDefaults) und das Konfigurations-Sheet.
 // Universal-Binary, getestet auf macOS 26 (Tahoe), Apple Silicon.
 
 @objc(PixelWashView)
 public final class PixelWashView: ScreenSaverView {
 
-    enum Mode: String, CaseIterable {
-        case noise, cycle, bars, checker
-        var label: String {
-            switch self {
-            case .noise:   return "Rauschen"
-            case .cycle:   return "Vollfarben"
-            case .bars:    return "Laufstreifen"
-            case .checker: return "Schachbrett"
-            }
-        }
-        var defaultsKey: String { "mode_" + rawValue }
-    }
+    private typealias Mode = PixelWashMode
 
     // MARK: - Defaults / Persistenz
 
@@ -34,7 +23,7 @@ public final class PixelWashView: ScreenSaverView {
     private static let defaultTempo = 6
 
     private lazy var store: ScreenSaverDefaults = {
-        let id = Bundle(for: PixelWashView.self).bundleIdentifier ?? "de.equitania.pixelwash"
+        let id = Bundle(for: PixelWashView.self).bundleIdentifier ?? "ai.it-guy.pixelwash.saver"
         let d = ScreenSaverDefaults(forModuleWithName: id) ?? ScreenSaverDefaults()
         var reg: [String: Any] = [
             Key.switchEverySec: Self.defaultSwitchEverySec,
@@ -47,32 +36,8 @@ public final class PixelWashView: ScreenSaverView {
 
     // MARK: - Zustand
 
-    private let log = Logger(subsystem: "de.equitania.pixelwash", category: "main")
-    private var activeModes: [Mode] = Mode.allCases
-    private var switchSecs: TimeInterval = defaultSwitchEverySec
-    private var speed = defaultTempo
-    private var modeIdx = 0
-    private var mode: Mode = .noise
-    private var lastSwitch = Date()
-    private var tick = 0           // globaler Frame-Zaehler fuer modusinterne Takte
-
-    // Wiederverwendeter Rauschpuffer (Block-Aufloesung, nicht Pixel-Aufloesung).
-    private var noiseBuf = [UInt8]()
-    private var noiseCols = 0
-    private var noiseRows = 0
-
-    // Vollfarben-Palette fuer den cycle-Modus.
-    private let palette: [NSColor] = [
-        .white, .black,
-        NSColor(srgbRed: 1, green: 0, blue: 0, alpha: 1),
-        NSColor(srgbRed: 0, green: 1, blue: 0, alpha: 1),
-        NSColor(srgbRed: 0, green: 0, blue: 1, alpha: 1),
-        NSColor(srgbRed: 1, green: 1, blue: 0, alpha: 1),
-        NSColor(srgbRed: 0, green: 1, blue: 1, alpha: 1),
-        NSColor(srgbRed: 1, green: 0, blue: 1, alpha: 1),
-        NSColor(srgbRed: 0.5, green: 0.5, blue: 0.5, alpha: 1),
-    ]
-    private var cycleIdx = 0
+    private let log = Logger(subsystem: "ai.it-guy.pixelwash.saver", category: "main")
+    private let engine = PixelWashEngine()
 
     // MARK: - Init
 
@@ -81,24 +46,22 @@ public final class PixelWashView: ScreenSaverView {
         wantsLayer = true
         layer?.backgroundColor = NSColor.black.cgColor
         loadSettings()
-        animationTimeInterval = interval(for: mode)
+        animationTimeInterval = engine.currentInterval
     }
 
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
         loadSettings()
-        animationTimeInterval = interval(for: mode)
+        animationTimeInterval = engine.currentInterval
     }
 
     // MARK: - Einstellungen laden
 
     private func loadSettings() {
-        activeModes = Mode.allCases.filter { store.bool(forKey: $0.defaultsKey) }
-        if activeModes.isEmpty { activeModes = [.noise] }
-        switchSecs = store.double(forKey: Key.switchEverySec)
-        speed = max(1, min(10, store.integer(forKey: Key.tempo)))
-        modeIdx = 0
-        mode = activeModes[0]
+        let active = Mode.allCases.filter { store.bool(forKey: $0.defaultsKey) }
+        engine.configure(activeModes: active,
+                         switchSecs: store.double(forKey: Key.switchEverySec),
+                         speed: store.integer(forKey: Key.tempo))
     }
 
     // MARK: - Lebenszyklus
@@ -106,9 +69,8 @@ public final class PixelWashView: ScreenSaverView {
     public override func startAnimation() {
         super.startAnimation()
         loadSettings()                       // frische Werte aus dem Sheet uebernehmen
-        animationTimeInterval = interval(for: mode)
-        log.info("startAnimation preview=\(self.isPreview, privacy: .public) modes=\(self.activeModes.map { $0.rawValue }.joined(separator: ","), privacy: .public)")
-        lastSwitch = Date()
+        animationTimeInterval = engine.currentInterval
+        log.info("startAnimation preview=\(self.isPreview, privacy: .public) modes=\(self.engine.activeModes.map { $0.rawValue }.joined(separator: ","), privacy: .public)")
     }
 
     public override func stopAnimation() {
@@ -116,127 +78,17 @@ public final class PixelWashView: ScreenSaverView {
     }
 
     public override func animateOneFrame() {
-        tick &+= 1
-        maybeSwitchMode()
-        if mode == .cycle, tick % cycleEvery == 0 {
-            cycleIdx = (cycleIdx + 1) % palette.count
+        if engine.advance() {
+            animationTimeInterval = engine.currentInterval   // Timer mit neuem Takt
         }
         setNeedsDisplay(bounds)
-    }
-
-    // MARK: - Auto-Mix
-
-    private func maybeSwitchMode() {
-        guard switchSecs > 0, activeModes.count > 1 else { return }
-        if Date().timeIntervalSince(lastSwitch) >= switchSecs {
-            modeIdx = (modeIdx + 1) % activeModes.count
-            mode = activeModes[modeIdx]
-            lastSwitch = Date()
-            animationTimeInterval = interval(for: mode)   // Timer mit neuem Takt
-        }
-    }
-
-    // Tempo-Mapping: tempo 10 ~ 60fps, tempo 1 ~ 10fps.
-    // noise wird auf <=30fps gedeckelt (zehntausende Fuellungen pro Frame).
-    private func interval(for mode: Mode) -> TimeInterval {
-        let base = (16.0 + Double(10 - speed) * 9.0) / 1000.0
-        let floor = (mode == .noise) ? 1.0 / 30.0 : 0.0
-        return max(base, floor)
     }
 
     // MARK: - Rendering
 
     public override func draw(_ rect: NSRect) {
         guard let ctx = NSGraphicsContext.current?.cgContext else { return }
-        ctx.setFillColor(NSColor.black.cgColor)
-        ctx.fill(bounds)
-        switch mode {
-        case .noise:   drawNoise(ctx)
-        case .cycle:   drawCycle(ctx)
-        case .bars:    drawBars(ctx)
-        case .checker: drawChecker(ctx)
-        }
-    }
-
-    // --- Modus 1: RGB-Rauschen (kleiner Zufallspuffer, blockig hochskaliert) ---
-    private func drawNoise(_ ctx: CGContext) {
-        let block: CGFloat = 7
-        let cols = max(1, Int((bounds.width / block).rounded(.up)))
-        let rows = max(1, Int((bounds.height / block).rounded(.up)))
-        if cols != noiseCols || rows != noiseRows {
-            noiseCols = cols; noiseRows = rows
-            noiseBuf = [UInt8](repeating: 0, count: cols * rows * 4)
-        }
-        noiseBuf.withUnsafeMutableBufferPointer { buf in
-            var i = 0
-            while i < buf.count {
-                buf[i]     = UInt8.random(in: 0...255)   // R
-                buf[i + 1] = UInt8.random(in: 0...255)   // G
-                buf[i + 2] = UInt8.random(in: 0...255)   // B
-                buf[i + 3] = 255                          // A
-                i += 4
-            }
-        }
-        let cs = CGColorSpaceCreateDeviceRGB()
-        guard let provider = CGDataProvider(data: Data(noiseBuf) as CFData),
-              let img = CGImage(width: cols, height: rows, bitsPerComponent: 8,
-                                bitsPerPixel: 32, bytesPerRow: cols * 4,
-                                space: cs,
-                                bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue),
-                                provider: provider, decode: nil,
-                                shouldInterpolate: false, intent: .defaultIntent)
-        else { return }
-        ctx.interpolationQuality = .none
-        ctx.draw(img, in: bounds)
-    }
-
-    // --- Modus 2: Vollfarben-Zyklus (Index wird in animateOneFrame getaktet) ---
-    private var cycleEvery: Int { max(2, 22 - speed * 2) }
-    private func drawCycle(_ ctx: CGContext) {
-        ctx.setFillColor(palette[cycleIdx].cgColor)
-        ctx.fill(bounds)
-    }
-
-    // --- Modus 3: diagonale Laufstreifen ---
-    private func drawBars(_ ctx: CGContext) {
-        let bar: CGFloat = 80
-        let H = bounds.height
-        let W = bounds.width
-        let off = CGFloat((tick * speed) % Int(bar * 2))
-        ctx.setFillColor(NSColor.white.cgColor)
-        var x = -bar * 2 + off
-        while x < W + H {
-            ctx.beginPath()
-            ctx.move(to: CGPoint(x: x, y: H))
-            ctx.addLine(to: CGPoint(x: x + bar, y: H))
-            ctx.addLine(to: CGPoint(x: x + bar - H, y: 0))
-            ctx.addLine(to: CGPoint(x: x - H, y: 0))
-            ctx.closePath()
-            ctx.fillPath()
-            x += bar * 2
-        }
-    }
-
-    // --- Modus 4: invertierendes Schachbrett ---
-    private func drawChecker(_ ctx: CGContext) {
-        let c: CGFloat = 24
-        let every = max(2, 18 - speed)
-        let inv = (tick / every) % 2 == 1
-        var ry = 0
-        var y: CGFloat = 0
-        while y < bounds.height {
-            var rx = 0
-            var x: CGFloat = 0
-            while x < bounds.width {
-                let on = ((rx + ry) & 1) == (inv ? 1 : 0)
-                if on {
-                    ctx.setFillColor(NSColor.white.cgColor)
-                    ctx.fill(CGRect(x: x, y: y, width: c, height: c))
-                }
-                x += c; rx += 1
-            }
-            y += c; ry += 1
-        }
+        engine.draw(in: ctx, bounds: bounds)
     }
 
     // MARK: - Konfigurations-Sheet
@@ -331,6 +183,7 @@ public final class PixelWashView: ScreenSaverView {
         }
         store.synchronize()
         loadSettings()
+        animationTimeInterval = engine.currentInterval
         endSheet()
     }
 

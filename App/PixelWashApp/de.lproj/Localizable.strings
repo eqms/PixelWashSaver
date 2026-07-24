@@ -1,0 +1,29 @@
+/* App-Name im App-Menü */
+"app.name" = "PixelWash";
+
+/* Menüs */
+"menu.about" = "Über";
+"menu.quit" = "Beenden";
+"menu.window" = "Fenster";
+"menu.minimize" = "Im Dock ablegen";
+"menu.zoom" = "Zoomen";
+
+/* Hauptfenster */
+"window.title" = "PixelWash";
+"sidebar.title" = "Wash-Einstellungen";
+"sidebar.modes" = "Aktive Modi";
+"sidebar.tempo" = "Tempo";
+"sidebar.switchInterval" = "Moduswechsel alle";
+"sidebar.seconds" = "Sekunden (0 = nie)";
+"sidebar.startButton" = "Wash starten (Vollbild)";
+
+/* Modusnamen — bewusst hier abgebildet, NICHT über PixelWashMode.label (nur Deutsch) */
+"mode.noise" = "Rauschen";
+"mode.cycle" = "Vollfarben";
+"mode.bars" = "Laufstreifen";
+"mode.checker" = "Schachbrett";
+
+/* Cross-Promotion-Box für den kostenlosen Bildschirmschoner */
+"sidebar.saverBox.title" = "Bildschirmschoner";
+"sidebar.saverBox.text" = "PixelWash gibt es auch als kostenlosen macOS-Bildschirmschoner, der den Bildschirm automatisch im Leerlauf durchspült.";
+"sidebar.saverBox.button" = "Kostenlosen Bildschirmschoner holen";

@@ -1,0 +1,17 @@
+A ghost of your menu bar still visible on a dark background? That's image retention — and PixelWash is the fastest way to deal with it.
+
+PixelWash runs four proven wash patterns in fullscreen on every connected display, exercising each pixel so temporary retention fades: RGB noise flickers every pixel through random colors, solid-color cycling drives the full palette edge to edge, moving bars sweep diagonally across the panel, and an inverting checkerboard targets sharp-edged ghosts.
+
+Start a wash the moment you notice a stuck image, let it run for a few minutes — or a few hours for stubborn cases — and stop it with a click or a keypress.
+
+• Four wash modes: RGB noise, solid colors, moving bars, checkerboard
+• Auto-mix: rotates through your selected modes at an interval you choose
+• Covers every connected display at once, at native resolution
+• Tempo control from gentle to aggressive
+• Keeps your display awake while a wash is running
+• Live preview in the window before you go fullscreen
+• No account, no network, no data collection — it draws pixels, that's all
+
+Honest fine print: washing helps with temporary image retention, common on OLED and some LCD panels. Permanent burn-in — pixels physically aged unevenly over years — cannot be fully reversed by any software. The earlier you wash, the better the odds.
+
+Prefer prevention? The free PixelWash screen saver (separate download from it-guy.ai) runs the same wash modes automatically whenever your Mac is idle.

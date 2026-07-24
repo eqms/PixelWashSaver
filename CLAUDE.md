@@ -48,14 +48,16 @@ If a re-build still shows the old version: `legacyScreenSaver` holds the bundle
 via mmap. `install.sh` already kills it; if it persists, toggle to another
 screensaver and back.
 
-Diagnostics: the view logs to subsystem `de.equitania.pixelwash`. The shell
+Diagnostics: the view logs to subsystem `ai.it-guy.pixelwash.saver`. The shell
 shadows the system `log` with a function, so use the absolute path:
-`/usr/bin/log show --last 2m --info --predicate 'subsystem == "de.equitania.pixelwash"' --style compact`.
+`/usr/bin/log show --last 2m --info --predicate 'subsystem == "ai.it-guy.pixelwash.saver"' --style compact`.
 
 ## Architecture
 
-`PixelWashView` is a single `ScreenSaverView` subclass using the canonical
-ScreenSaver render loop:
+The drawing code lives in `Sources/PixelWashCore.swift` (`PixelWashEngine` +
+`PixelWashMode`, no ScreenSaver import) so it can be shared with the Mac App
+Store app target. `PixelWashView` is a thin `ScreenSaverView` wrapper around the
+engine using the canonical ScreenSaver render loop:
 
 - `animateOneFrame()` advances state (`tick` counter, mode switching, cycle index)
   and calls `setNeedsDisplay(bounds)`.
@@ -89,7 +91,7 @@ sheet's OK handler writes defaults then calls `loadSettings()`.
 ## Conventions
 
 - `Info.plist`: `NSPrincipalClass` = `PixelWashView`, bundle id
-  `de.equitania.pixelwash`. Keep `@objc(PixelWashView)` and the plist in sync.
+  `ai.it-guy.pixelwash.saver`. Keep `@objc(PixelWashView)` and the plist in sync.
 - Deployment target macOS 14.0 (set in both `build.sh` and `Info.plist`).
 - Comments and the README are in German; keep that style. Code identifiers stay
   English. Use proper UTF-8 (umlauts), no ASCII substitutes.

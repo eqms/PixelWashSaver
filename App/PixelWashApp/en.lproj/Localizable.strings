@@ -1,0 +1,29 @@
+/* App name shown in the app menu */
+"app.name" = "PixelWash";
+
+/* Menu items */
+"menu.about" = "About";
+"menu.quit" = "Quit";
+"menu.window" = "Window";
+"menu.minimize" = "Minimize";
+"menu.zoom" = "Zoom";
+
+/* Main window */
+"window.title" = "PixelWash";
+"sidebar.title" = "Wash settings";
+"sidebar.modes" = "Active modes";
+"sidebar.tempo" = "Speed";
+"sidebar.switchInterval" = "Switch mode every";
+"sidebar.seconds" = "seconds (0 = never)";
+"sidebar.startButton" = "Start wash (fullscreen)";
+
+/* Mode names — mapped explicitly, NOT taken from PixelWashMode.label (German-only) */
+"mode.noise" = "Noise";
+"mode.cycle" = "Solid colors";
+"mode.bars" = "Moving bars";
+"mode.checker" = "Checkerboard";
+
+/* Screen saver cross-promotion box */
+"sidebar.saverBox.title" = "Screen saver";
+"sidebar.saverBox.text" = "PixelWash is also available as a free macOS screen saver that washes your display automatically whenever it is idle.";
+"sidebar.saverBox.button" = "Get the free screen saver";
