@@ -1,5 +1,13 @@
 # Release Notes
 
+## App 1.0 (in Vorbereitung, 24.07.2026)
+
+- [FIX] App: main window never appeared — `@main` on an XIB-less
+  NSApplicationDelegate never instantiates the delegate; added an explicit
+  `static func main()` entry point that creates and attaches it.
+- [FIX] App: German download button label was truncated in the screen saver
+  box ("Kostenlos herunterladen" instead of the overlong phrasing).
+
 ## 2.2 (24.07.2026)
 
 - [CHG] Rebranding: publisher is now Martin Schmid (it-guy.ai); bundle id changed

@@ -8,6 +8,18 @@ import Cocoa
 @main
 final class AppDelegate: NSObject, NSApplicationDelegate {
 
+    // Expliziter Einstieg: ohne MainMenu.xib instanziert NSApplicationMain den
+    // Delegate NICHT selbst - @main allein liefe daher ohne Delegate (und ohne
+    // Fenster). delegate ist unowned(unsafe); die lokale Konstante lebt bis
+    // app.run() zurueckkehrt, haelt ihn also am Leben.
+    static func main() {
+        let app = NSApplication.shared
+        let delegate = AppDelegate()
+        app.delegate = delegate
+        app.setActivationPolicy(.regular)
+        app.run()
+    }
+
     private var mainWindowController: MainWindowController?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
